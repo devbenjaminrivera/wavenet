@@ -18,6 +18,11 @@
   --success: #4b7f52;
   --warning: #c17c3a;
   --danger: #b85c4b;
+
+  --muted: var(--text-soft);
+  --sub: var(--text-soft);
+  --surface2: var(--surface-alt);
+  --amber: var(--warning);
 }
 
 html,

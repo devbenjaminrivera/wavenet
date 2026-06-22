@@ -80,9 +80,13 @@ ${lines}
   const report = exportOpen ? buildReport() : '';
 
   const interColor =
-    tipoInter === 'constructiva' ? 'var(--primary)' :
-    tipoInter === 'destructiva'  ? 'var(--danger)' :
-    tipoInter === 'mixta'        ? '#FF6B2B' : '#4A6680';
+  tipoInter === 'constructiva'
+    ? 'var(--success)'
+    : tipoInter === 'destructiva'
+      ? 'var(--danger)'
+      : tipoInter === 'mixta'
+        ? 'var(--warning)'
+        : 'var(--text-soft)';
 
   return (
     <>
@@ -106,7 +110,7 @@ ${lines}
             }}>
               WAVENET
             </div>
-            <div style={{ fontSize: 10, color: 'var(--muted)', marginTop: 3, letterSpacing: '0.07em', textTransform: 'uppercase' }}>
+            <div style={{ fontSize: 10, color: 'var(--text-soft)', marginTop: 3, letterSpacing: '0.07em', textTransform: 'uppercase' }}>
               Simulador de Interferencia Wi-Fi
             </div>
           </div>
@@ -136,8 +140,8 @@ ${lines}
                 transition: 'all 0.2s',
               }}
               onMouseEnter={e => {
-                (e.target as HTMLButtonElement).style.borderColor = 'var(--amber)';
-                (e.target as HTMLButtonElement).style.color = 'var(--amber)';
+                (e.target as HTMLButtonElement).style.borderColor = 'var(--warning)';
+                (e.target as HTMLButtonElement).style.color = 'var(--warning)';
               }}
               onMouseLeave={e => {
                 (e.target as HTMLButtonElement).style.borderColor = 'var(--border)';
@@ -152,7 +156,7 @@ ${lines}
           <div style={{
             padding: '8px 16px', borderTop: '1px solid var(--border)',
             fontFamily: "'Inter', monospace",
-            fontSize: 9, color: 'var(--muted)', letterSpacing: '0.1em',
+            fontSize: 9, color: 'var(--text-soft)', letterSpacing: '0.1em',
             flexShrink: 0,
           }}>
             UNIDAD 4 · CINEMÁTICA DE ONDAS
@@ -166,7 +170,7 @@ ${lines}
           <header style={{
             height: 48, flexShrink: 0,
             borderBottom: '1px solid var(--border)',
-            background: 'rgba(13,21,32,0.7)',
+            background: 'rgba(255,255,255,0.85)',
             backdropFilter: 'blur(8px)',
             display: 'flex', alignItems: 'center',
             justifyContent: 'space-between',
@@ -179,7 +183,7 @@ ${lines}
                 fontFamily: "'Inter', monospace",
                 fontSize: 10, color: 'var(--primary)',
                 background: 'var(--surface-alt)',
-                border: '1px solid rgba(0,229,255,0.2)',
+                border: '1px solid var(--border)',
                 borderRadius: 4, padding: '3px 9px',
                 display: 'flex', alignItems: 'center', gap: 5,
               }}>
@@ -190,13 +194,13 @@ ${lines}
               {/* Badge frecuencia */}
               <div style={{
                 fontFamily: "'Inter', monospace",
-                fontSize: 10, color: 'var(--sub)',
-                background: 'var(--surface2)',
+                fontSize: 10, color: 'var(--text-soft)',
+                background: 'var(--surface-alt)',
                 border: '1px solid var(--border)',
                 borderRadius: 4, padding: '3px 9px',
               }}>
                 {config.frecuenciaGlobal} GHz
-                <span style={{ color: 'var(--muted)', marginLeft: 6 }}>
+                <span style={{ color: 'var(--text-soft)', marginLeft: 6 }}>
                   λ={config.frecuenciaGlobal === '2.4' ? '12.5' : '6.0'} cm
                 </span>
               </div>
@@ -207,7 +211,7 @@ ${lines}
               fontFamily: "'Inter', monospace",
               fontSize: 10, display: 'flex', alignItems: 'center', gap: 8,
             }}>
-              <span style={{ color: 'var(--muted)' }}>Δr</span>
+              <span style={{ color: 'var(--text-soft)' }}>Δr</span>
               <span style={{ color: 'var(--text)' }}>{deltaR !== null ? `${deltaR} cm` : '—'}</span>
               {tipoInter && (
                 <span style={{
@@ -219,7 +223,7 @@ ${lines}
                   {tipoInter.toUpperCase()}
                 </span>
               )}
-              <span style={{ color: 'var(--muted)', fontSize: 9 }}>
+              <span style={{ color: 'var(--text-soft)', fontSize: 9 }}>
                 · mueve el cursor sobre el mapa
               </span>
             </div>
@@ -248,7 +252,7 @@ ${lines}
                 position: 'absolute', top: 10, right: 10,
                 fontFamily: "'Inter', monospace",
                 fontSize: 8, letterSpacing: '0.1em',
-                color: 'var(--muted)',
+                color: 'var(--text-soft)',
                 background: 'rgba(8,12,18,0.75)',
                 border: '1px solid var(--border)',
                 borderRadius: 4, padding: '3px 7px',
@@ -270,7 +274,7 @@ ${lines}
               width: '100%', maxWidth: 1040,
               display: 'flex', justifyContent: 'space-between',
               fontFamily: "'Inter', monospace",
-              fontSize: '8.5px', color: 'var(--muted)', letterSpacing: '0.07em',
+              fontSize: '8.5px', color: 'var(--text-soft)', letterSpacing: '0.07em',
             }}>
               <span>DESTRUCTIVA [zona muerta]</span>
               <span>TRANSICIÓN</span>
@@ -312,7 +316,7 @@ ${lines}
                 onClick={() => { setExportOpen(false); setCopied(false); }}
                 style={{
                   background: 'none', border: '1px solid var(--border)',
-                  borderRadius: 4, color: 'var(--muted)',
+                  borderRadius: 4, color: 'var(--text-soft)',
                   padding: '3px 8px', cursor: 'pointer',
                   fontFamily: "'Inter', monospace", fontSize: 10,
                 }}
