@@ -75,20 +75,18 @@ void main() {
 
   // Detectar zona muerta: intensidad < 12% del máximo
   if (uDeadZones && uCount >= 2 && intensity < 0.12) {
-    // Rojo apagado técnico — marca diagnóstica de zona de sombra RF
-    col = vec3(0.55, 0.06, 0.06);
+  col = vec3(0.72, 0.36, 0.29);
+} else {
+  if (v < 0.25) {
+    col = mix(vec3(0.95, 0.94, 0.91), vec3(0.88, 0.86, 0.82), v / 0.25);
+  } else if (v < 0.5) {
+    col = mix(vec3(0.88, 0.86, 0.82), vec3(0.76, 0.73, 0.66), (v - 0.25) / 0.25);
+  } else if (v < 0.75) {
+    col = mix(vec3(0.76, 0.73, 0.66), vec3(0.44, 0.55, 0.53), (v - 0.5) / 0.25);
   } else {
-    // Gradiente de 4 pasos: negro → azul medianoche → azul océano → cyan
-    if (v < 0.25) {
-      col = mix(vec3(0.010, 0.020, 0.040), vec3(0.0, 0.07, 0.17),  v / 0.25);
-    } else if (v < 0.5) {
-      col = mix(vec3(0.0, 0.07, 0.17),    vec3(0.0, 0.22, 0.38),  (v - 0.25) / 0.25);
-    } else if (v < 0.75) {
-      col = mix(vec3(0.0, 0.22, 0.38),    vec3(0.0, 0.58, 0.75),  (v - 0.5)  / 0.25);
-    } else {
-      col = mix(vec3(0.0, 0.58, 0.75),    vec3(0.04, 0.90, 1.0),  (v - 0.75) / 0.25);
-    }
+    col = mix(vec3(0.44, 0.55, 0.53), vec3(0.25, 0.37, 0.35), (v - 0.75) / 0.25);
   }
+}
 
   gl_FragColor = vec4(col, 1.0);
 }

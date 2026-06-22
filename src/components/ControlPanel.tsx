@@ -21,12 +21,14 @@ const Toggle = ({
   label, checked, onChange,
 }: { label: string; checked: boolean; onChange: (v: boolean) => void }) => (
   <label className="flex items-center justify-between cursor-pointer select-none group">
-    <span className="text-[13px] text-[#8BA3BD] group-hover:text-[#C8D6E5] transition-colors">{label}</span>
+    <span className="text-[13px] text-[var(--text-soft)] group-hover:text-[var(--text)] transition-colors">{label}</span>
     <button
       role="switch" aria-checked={checked}
       onClick={() => onChange(!checked)}
       className={`relative w-8 h-[18px] rounded-full transition-colors duration-200 focus:outline-none ${
-        checked ? 'bg-[#00E5FF]' : 'bg-[#1A2D44]'
+        checked
+  ? 'bg-[var(--primary)]'
+  : 'bg-[var(--surface-alt)]'
       }`}
     >
       <span className={`absolute top-0.5 left-0.5 w-[14px] h-[14px] rounded-full bg-white shadow transition-transform duration-200 ${
@@ -49,10 +51,10 @@ const Param = ({
   return (
     <div className="flex flex-col gap-1.5">
       <div className="flex justify-between items-center">
-        <span className="text-[11px] uppercase tracking-[0.1em] text-[#4A6680]">{label}</span>
-        <span className="text-[11px] font-mono text-[#C8D6E5]">{display} {unit}</span>
+        <span className="text-sm font-medium text-[var(--text-soft)]">{label}</span>
+        <span className="text-sm font-medium text-[var(--text)]">{display} {unit}</span>
       </div>
-      <div className="relative h-[3px] rounded-full bg-[#1A2D44]">
+      <div className="relative h-[3px] rounded-full bg-[var(--surface-alt)]">
         <div
           className="absolute inset-y-0 left-0 rounded-full"
           style={{ width: `${pct}%`, background: accent }}
@@ -101,9 +103,13 @@ export const ControlPanel: React.FC<Props> = ({
   const lambdaCm = (lambda * 100).toFixed(1);
 
   const interColor =
-    tipoInter === 'constructiva' ? '#00E5FF' :
-    tipoInter === 'destructiva'  ? '#EF4444' :
-    tipoInter === 'mixta'        ? '#FF6B2B' : '#4A6680';
+  tipoInter === 'constructiva'
+    ? 'var(--success)'
+    : tipoInter === 'destructiva'
+      ? 'var(--danger)'
+      : tipoInter === 'mixta'
+        ? 'var(--warning)'
+        : 'var(--text-soft)';
 
   return (
     <div className="flex flex-col gap-5 p-4">
@@ -111,15 +117,15 @@ export const ControlPanel: React.FC<Props> = ({
       {/* ── Frecuencia ── */}
       <section>
         <p className="sec-label">Banda Wi-Fi</p>
-        <div className="flex rounded-md overflow-hidden border border-[#1A2D44]">
+        <div className="flex rounded-md overflow-hidden border border-[var(--border)]">
           {(['2.4', '5.0'] as const).map(f => (
             <button
               key={f}
               onClick={() => setConfig(prev => ({ ...prev, frecuenciaGlobal: f }))}
-              className={`flex-1 py-2 text-[12px] font-mono transition-all ${
+              className={`flex-1 py-2 text-sm font-medium transition-all ${
                 config.frecuenciaGlobal === f
-                  ? 'bg-[rgba(0,229,255,0.09)] text-[#00E5FF] shadow-[inset_0_-2px_0_#00E5FF]'
-                  : 'text-[#4A6680] hover:text-[#8BA3BD]'
+                  ? 'bg-[var(--surface-alt)] text-[var(--primary)] shadow-[inset_0_-2px_0_var(--primary)]'
+: 'text-[var(--text-soft)] hover:text-[var(--text)]'
               }`}
             >
               {f} GHz
@@ -206,9 +212,9 @@ export const ControlPanel: React.FC<Props> = ({
           <button
             onClick={addRouter}
             disabled={routers.length >= MAX_ROUTERS}
-            className="text-[10px] font-mono text-[#00E5FF] border border-[#1A2D44] rounded px-2 py-0.5
-              hover:border-[#00E5FF] hover:bg-[rgba(0,229,255,0.05)] transition-all
-              disabled:opacity-30 disabled:cursor-not-allowed"
+            className="text-xs font-medium text-[var(--primary)] border border-[var(--border)] rounded px-2 py-1
+hover:border-[var(--primary)] hover:bg-[var(--surface-alt)] transition-all
+disabled:opacity-30 disabled:cursor-not-allowed"
           >
             + Añadir
           </button>
@@ -219,21 +225,21 @@ export const ControlPanel: React.FC<Props> = ({
             const slot = ROUTER_SLOTS[i] ?? ROUTER_SLOTS[0];
             return (
               <div key={r.id}
-                className="rounded-lg border border-[#1A2D44] bg-[#111E2F] p-3 flex flex-col gap-3"
+                className="rounded-lg border border-[var(--border)] bg-[var(--surface)] p-3 flex flex-col gap-3"
               >
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <span className="w-2 h-2 rounded-full" style={{ background: slot.color }} />
-                    <span className="font-mono text-[12px] font-bold text-[#C8D6E5]">{r.id}</span>
+                    <span className="text-sm font-semibold text-[var(--text)]">{r.id}</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <span className="font-mono text-[9px] text-[#4A6680]">
+                    <span className="text-xs text-[var(--text-soft)]">
                       {r.x.toFixed(1)}m / {r.y.toFixed(1)}m
                     </span>
                     {routers.length > 1 && (
                       <button
                         onClick={() => removeRouter(r.id)}
-                        className="text-[#4A6680] hover:text-[#EF4444] text-[10px] border border-[#1A2D44] rounded px-1.5 py-0.5 transition-colors"
+                        className="text-[var(--text-soft)] hover:text-[var(--danger)] text-xs border border-[var(--border)] rounded px-1.5 py-0.5 transition-colors"
                       >
                         ✕
                       </button>

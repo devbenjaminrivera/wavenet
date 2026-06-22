@@ -80,8 +80,8 @@ ${lines}
   const report = exportOpen ? buildReport() : '';
 
   const interColor =
-    tipoInter === 'constructiva' ? '#00E5FF' :
-    tipoInter === 'destructiva'  ? '#EF4444' :
+    tipoInter === 'constructiva' ? 'var(--primary)' :
+    tipoInter === 'destructiva'  ? 'var(--danger)' :
     tipoInter === 'mixta'        ? '#FF6B2B' : '#4A6680';
 
   return (
@@ -102,7 +102,7 @@ ${lines}
           --text:     #C8D6E5;
           --muted:    #4A6680;
           --sub:      #8BA3BD;
-          --cyan:     #00E5FF;
+          --cyan:     var(--primary);
           --amber:    #FF6B2B;
           --indigo:   #6366F1;
         }
@@ -114,7 +114,7 @@ ${lines}
 
         /* ── Sidebar helpers ──────────────────────────────────────────── */
         .sec-label {
-          font-family: 'Space Mono', monospace;
+          font-family: 'Inter', monospace;
           font-size: 8.5px;
           letter-spacing: 0.14em;
           text-transform: uppercase;
@@ -141,7 +141,7 @@ ${lines}
         }
 
         .phys-k { color: var(--muted); }
-        .phys-v { font-family: 'Space Mono', monospace; color: var(--cyan); font-size: 11px; }
+        .phys-v { font-family: 'Inter', monospace; color: var(--primary); font-size: 11px; }
 
         /* ── Canvas grid background for main area ─────────────────────── */
         .grid-bg {
@@ -165,9 +165,9 @@ ${lines}
           {/* Logo */}
           <div style={{ padding: '20px 18px 16px', borderBottom: '1px solid var(--border)', flexShrink: 0 }}>
             <div style={{
-              fontFamily: "'Space Mono', monospace",
+              fontFamily: "'Inter', monospace",
               fontSize: 16, fontWeight: 700,
-              letterSpacing: '0.22em', color: 'var(--cyan)',
+              letterSpacing: '0.22em', color: 'var(--primary)',
             }}>
               WAVENET
             </div>
@@ -195,7 +195,7 @@ ${lines}
                 border: '1px solid var(--border)',
                 borderRadius: 6,
                 color: 'var(--text)',
-                fontFamily: "'Space Mono', monospace",
+                fontFamily: "'Inter', monospace",
                 fontSize: 10, cursor: 'pointer',
                 letterSpacing: '0.07em',
                 transition: 'all 0.2s',
@@ -216,7 +216,7 @@ ${lines}
           {/* Footer */}
           <div style={{
             padding: '8px 16px', borderTop: '1px solid var(--border)',
-            fontFamily: "'Space Mono', monospace",
+            fontFamily: "'Inter', monospace",
             fontSize: 9, color: 'var(--muted)', letterSpacing: '0.1em',
             flexShrink: 0,
           }}>
@@ -241,9 +241,9 @@ ${lines}
             <div style={{ display:'flex', gap: 10, alignItems:'center' }}>
               {/* Badge WebGL */}
               <div style={{
-                fontFamily: "'Space Mono', monospace",
-                fontSize: 10, color: 'var(--cyan)',
-                background: 'rgba(0,229,255,0.07)',
+                fontFamily: "'Inter', monospace",
+                fontSize: 10, color: 'var(--primary)',
+                background: 'var(--surface-alt)',
                 border: '1px solid rgba(0,229,255,0.2)',
                 borderRadius: 4, padding: '3px 9px',
                 display: 'flex', alignItems: 'center', gap: 5,
@@ -254,7 +254,7 @@ ${lines}
 
               {/* Badge frecuencia */}
               <div style={{
-                fontFamily: "'Space Mono', monospace",
+                fontFamily: "'Inter', monospace",
                 fontSize: 10, color: 'var(--sub)',
                 background: 'var(--surface2)',
                 border: '1px solid var(--border)',
@@ -269,7 +269,7 @@ ${lines}
 
             {/* Δr en topbar */}
             <div style={{
-              fontFamily: "'Space Mono', monospace",
+              fontFamily: "'Inter', monospace",
               fontSize: 10, display: 'flex', alignItems: 'center', gap: 8,
             }}>
               <span style={{ color: 'var(--muted)' }}>Δr</span>
@@ -311,7 +311,7 @@ ${lines}
               {/* Badge esquina */}
               <div style={{
                 position: 'absolute', top: 10, right: 10,
-                fontFamily: "'Space Mono', monospace",
+                fontFamily: "'Inter', monospace",
                 fontSize: 8, letterSpacing: '0.1em',
                 color: 'var(--muted)',
                 background: 'rgba(8,12,18,0.75)',
@@ -328,13 +328,13 @@ ${lines}
           <div style={{ flexShrink: 0, padding: '0 20px 14px', display:'flex', flexDirection:'column', alignItems:'center', gap: 4 }}>
             <div style={{
               width: '100%', maxWidth: 1040, height: 5, borderRadius: 3,
-              background: 'linear-gradient(to right, #030508 0%, #001020 15%, #00203A 30%, #005060 50%, #009EC0 70%, #00C8E8 85%, #00E5FF 100%)',
+              background: 'linear-gradient(to right, #030508 0%, #001020 15%, #00203A 30%, #005060 50%, #009EC0 70%, #00C8E8 85%, var(--primary) 100%)',
               border: '1px solid var(--border)',
             }} />
             <div style={{
               width: '100%', maxWidth: 1040,
               display: 'flex', justifyContent: 'space-between',
-              fontFamily: "'Space Mono', monospace",
+              fontFamily: "'Inter', monospace",
               fontSize: '8.5px', color: 'var(--muted)', letterSpacing: '0.07em',
             }}>
               <span>DESTRUCTIVA [zona muerta]</span>
@@ -368,8 +368,8 @@ ${lines}
           >
             <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center' }}>
               <span style={{
-                fontFamily: "'Space Mono', monospace",
-                fontSize: 11, color: 'var(--cyan)', letterSpacing: '0.12em',
+                fontFamily: "'Inter', monospace",
+                fontSize: 11, color: 'var(--primary)', letterSpacing: '0.12em',
               }}>
                 REPORTE DE ANÁLISIS DE ESPECTRO
               </span>
@@ -379,7 +379,7 @@ ${lines}
                   background: 'none', border: '1px solid var(--border)',
                   borderRadius: 4, color: 'var(--muted)',
                   padding: '3px 8px', cursor: 'pointer',
-                  fontFamily: "'Space Mono', monospace", fontSize: 10,
+                  fontFamily: "'Inter', monospace", fontSize: 10,
                 }}
               >
                 Cerrar
@@ -387,7 +387,7 @@ ${lines}
             </div>
 
             <pre style={{
-              fontFamily: "'Space Mono', monospace",
+              fontFamily: "'Inter', monospace",
               fontSize: 10.5, lineHeight: 1.7,
               color: 'var(--text)',
               background: 'var(--bg)',
@@ -407,11 +407,11 @@ ${lines}
               }}
               style={{
                 padding: '10px',
-                background: copied ? 'rgba(34,197,94,0.08)' : 'rgba(0,229,255,0.07)',
-                border: `1px solid ${copied ? '#22C55E' : 'var(--cyan)'}`,
+                background: copied ? 'rgba(34,197,94,0.08)' : 'var(--surface-alt)',
+                border: `1px solid ${copied ? '#22C55E' : 'var(--primary)'}`,
                 borderRadius: 6,
-                color: copied ? '#22C55E' : 'var(--cyan)',
-                fontFamily: "'Space Mono', monospace",
+                color: copied ? '#22C55E' : 'var(--primary)',
+                fontFamily: "'Inter', monospace",
                 fontSize: 11, cursor: 'pointer',
                 letterSpacing: '0.06em', transition: 'all 0.15s',
               }}

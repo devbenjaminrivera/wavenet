@@ -2,21 +2,85 @@
 @tailwind components;
 @tailwind utilities;
 
-html, body {
+:root {
+  --bg: #f5eeee;
+  --surface: #ffffff;
+  --surface-alt: #e9e5dd;
+
+  --border: #d6d3d1;
+
+  --text: #2f3437;
+  --text-soft: #6b7280;
+
+  --primary: #3f5e5a;
+  --primary-light: #6f8b86;
+
+  --success: #4b7f52;
+  --warning: #c17c3a;
+  --danger: #b85c4b;
+}
+
+html,
+body {
   height: 100%;
-  background-color: #080C12;
-  color: #C8D6E5;
+  background: var(--bg);
+  color: var(--text);
   overflow: hidden;
 }
 
-/* Thumb del range slider — manejado per-slider con accentColor en ControlPanel */
-input[type=range] {
+body {
+  font-family: var(--font-sans);
+}
+
+h1,
+h2,
+h3,
+.sec-label {
+  font-family: var(--font-display);
+}
+
+.sec-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: var(--text);
+}
+
+.phys-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+}
+
+.phys-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.65rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.phys-k {
+  color: var(--text-soft);
+  font-size: 0.875rem;
+}
+
+.phys-v {
+  color: var(--text);
+  font-weight: 500;
+  font-size: 0.875rem;
+}
+
+input[type='range'] {
   -webkit-appearance: none;
   appearance: none;
   background: transparent;
   cursor: pointer;
 }
-input[type=range]::-webkit-slider-thumb {
+
+input[type='range']::-webkit-slider-thumb {
   -webkit-appearance: none;
-  width: 0; height: 0; /* el thumb visual lo maneja el div superpuesto en ControlPanel */
+  width: 0;
+  height: 0;
 }
