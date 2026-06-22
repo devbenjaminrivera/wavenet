@@ -1,22 +1,15 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css"; // <- TIENE QUE ESTAR ESTA IMPORTACIÓN
-
-const inter = Inter({ subsets: ["latin"] });
+import type { Metadata } from 'next';
+import './globals.css';
 
 export const metadata: Metadata = {
-  title: "WaveNet SYS.SIM",
-  description: "Simulador de atenuación RF",
+  title: 'WaveNet — Simulador de Interferencia Wi-Fi',
+  description: 'Simulación de superposición de ondas electromagnéticas en GPU mediante WebGL/GLSL',
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es">
-      <body className={inter.className}>{children}</body>
+      <body>{children}</body>
     </html>
   );
 }
