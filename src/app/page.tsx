@@ -86,72 +86,7 @@ ${lines}
 
   return (
     <>
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;600&display=swap');
-
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        html, body { height: 100%; background: #080C12; color: #C8D6E5; overflow: hidden; }
-        body { font-family: 'Inter', sans-serif; }
-
-        /* ── Design tokens ─────────────────────────────────────────────── */
-        :root {
-          --bg:       #080C12;
-          --surface:  #0D1520;
-          --surface2: #111E2F;
-          --border:   #1A2D44;
-          --text:     #C8D6E5;
-          --muted:    #4A6680;
-          --sub:      #8BA3BD;
-          --cyan:     var(--primary);
-          --amber:    #FF6B2B;
-          --indigo:   #6366F1;
-        }
-
-        /* ── Scrollbar ────────────────────────────────────────────────── */
-        .custom-scroll::-webkit-scrollbar { width: 3px; }
-        .custom-scroll::-webkit-scrollbar-track { background: transparent; }
-        .custom-scroll::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
-
-        /* ── Sidebar helpers ──────────────────────────────────────────── */
-        .sec-label {
-          font-family: 'Inter', monospace;
-          font-size: 8.5px;
-          letter-spacing: 0.14em;
-          text-transform: uppercase;
-          color: var(--muted);
-          margin-bottom: 8px;
-          display: block;
-        }
-
-        .phys-box {
-          background: var(--surface2);
-          border: 1px solid var(--border);
-          border-radius: 8px;
-          padding: 2px 12px;
-          overflow: hidden;
-        }
-
-        .phys-row {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          padding: 6px 0;
-          border-bottom: 1px solid rgba(26,45,68,0.6);
-          font-size: 11px;
-        }
-
-        .phys-k { color: var(--muted); }
-        .phys-v { font-family: 'Inter', monospace; color: var(--primary); font-size: 11px; }
-
-        /* ── Canvas grid background for main area ─────────────────────── */
-        .grid-bg {
-          background-image:
-            linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
-          background-size: 24px 24px;
-          background-color: #080C12;
-        }
-      `}</style>
+      
 
       <div style={{ display:'flex', height:'100vh', overflow:'hidden' }}>
 
